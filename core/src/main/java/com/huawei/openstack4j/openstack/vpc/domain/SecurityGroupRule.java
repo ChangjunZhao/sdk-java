@@ -1,0 +1,109 @@
+/*******************************************************************************
+ * 	Copyright 2018 HuaWei and OTC                                       
+ * 	                                                                                 
+ * 	Licensed under the Apache License, Version 2.0 (the "License"); you may not      
+ * 	use this file except in compliance with the License. You may obtain a copy of    
+ * 	the License at                                                                   
+ * 	                                                                                 
+ * 	    http://www.apache.org/licenses/LICENSE-2.0                                   
+ * 	                                                                                 
+ * 	Unless required by applicable law or agreed to in writing, software              
+ * 	distributed under the License is distributed on an "AS IS" BASIS, WITHOUT        
+ * 	WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the         
+ * 	License for the specific language governing permissions and limitations under    
+ * 	the License.                                                                     
+ *******************************************************************************/
+package com.huawei.openstack4j.openstack.vpc.domain;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.huawei.openstack4j.model.ModelEntity;
+import com.huawei.openstack4j.openstack.common.ListResult;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+/**
+ * Model represent attributes of security group rule
+ *
+ * @author ChangjunZhao
+ * @date   2018-03-25
+ */
+@Getter
+@ToString
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonRootName("security_group_rule")
+public class SecurityGroupRule implements ModelEntity{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	String id;
+
+	/**
+	 * security group id
+	 */
+	String security_group_id;
+	
+	/**
+	 * direction, egress or ingress
+	 */
+	String direction;
+	
+	/**
+	 * ethertype，IPv4 or IPv6
+	 */
+	String ethertype;
+	
+	/**
+	 * protocol，contains icmp，tcp，udp，and so on
+	 */
+	String protocol;
+	
+	/**
+	 * port range min， 1~65535
+	 */
+	@JsonProperty("port_range_min")
+	Integer portRangeMin;
+	
+	/**
+	 * port range max，1~65535
+	 */
+	@JsonProperty("port_range_max")
+	Integer portRangeMax;
+	
+	/**
+	 * remote ip prefix
+	 */
+	@JsonProperty("remote_ip_prefix")
+	String remote_ip_prefix;
+	
+	/**
+	 * remote group id
+	 */
+	@JsonProperty("remote_group_id")
+	String remoteGroupId;
+	
+	public static class SecurityGroupRules extends ListResult<SecurityGroupRule> {
+
+		private static final long serialVersionUID = 1L;
+
+		@JsonProperty("security_group_rules")
+		private List<SecurityGroupRule> securityGroupRules;
+
+		public List<SecurityGroupRule> value() {
+			return securityGroupRules;
+		}
+
+	}
+
+}

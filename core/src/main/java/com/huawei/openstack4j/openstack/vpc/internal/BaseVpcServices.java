@@ -1,0 +1,49 @@
+/*******************************************************************************
+ * 	Copyright 2018 HuaWei and OTC                                       
+ * 	                                                                                 
+ * 	Licensed under the Apache License, Version 2.0 (the "License"); you may not      
+ * 	use this file except in compliance with the License. You may obtain a copy of    
+ * 	the License at                                                                   
+ * 	                                                                                 
+ * 	    http://www.apache.org/licenses/LICENSE-2.0                                   
+ * 	                                                                                 
+ * 	Unless required by applicable law or agreed to in writing, software              
+ * 	distributed under the License is distributed on an "AS IS" BASIS, WITHOUT        
+ * 	WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the         
+ * 	License for the specific language governing permissions and limitations under    
+ * 	the License.                                                                     
+ *******************************************************************************/
+package com.huawei.openstack4j.openstack.vpc.internal;
+
+import com.huawei.openstack4j.api.types.ServiceType;
+import com.huawei.openstack4j.core.transport.Config;
+import com.huawei.openstack4j.core.transport.HttpMethod;
+import com.huawei.openstack4j.openstack.internal.BaseOpenStackService;
+
+/**
+ * Base service of Vpc service
+ * 
+ * @author ChangjunZhao
+ * @date   2018-03-25
+ */
+public class BaseVpcServices extends BaseOpenStackService {
+	public static String CONTENT_JSON = "application/json;charset=utf-8";
+	
+	public BaseVpcServices(){
+		super(ServiceType.NETWORK);
+	}
+	
+	/**
+	 * HuaWei Vpc Service validate the content-type in every request
+	 */
+	protected <R> Invocation<R> builder(Class<R> returnType, String path, HttpMethod method) {
+		// add common base path for vpc service
+		path = "/v1/%(project_id)s" + path;
+		
+		// setup common headers for vpc service
+		Invocation<R> invocation = super.builder(returnType, path, method);
+		Config config = invocation.getRequest().getConfig();
+		return invocation.header("Content-Type", CONTENT_JSON).header("X-Language", config.getLanguage());
+	}
+
+}

@@ -55,6 +55,7 @@ import com.huawei.openstack4j.openstack.maas.internal.MaaSService;
 import com.huawei.openstack4j.openstack.message.notification.internal.NotificationService;
 import com.huawei.openstack4j.openstack.message.queue.internal.MessageQueueService;
 import com.huawei.openstack4j.openstack.trove.internal.TroveService;
+import com.huawei.openstack4j.openstack.vpc.internal.VpcServices;
 
 /**
  * A client which has been identified. Any calls spawned from this session will
@@ -397,6 +398,12 @@ public interface OSClient<T extends OSClient<T>> {
 		 * @return the OTC {@link DatabaseServices} instance
 		 */
 		DatabaseServices database();
+		
+		/**
+		 * get the vpc service 
+		 * @return the OTC {@link VpcServices} instance
+		 */
+		VpcServices vpc();
 	}
 
 	/**

@@ -415,6 +415,11 @@ import com.huawei.openstack4j.openstack.trove.internal.TroveDatabaseParamService
 import com.huawei.openstack4j.openstack.trove.internal.TroveInstanceFlavorService;
 import com.huawei.openstack4j.openstack.trove.internal.TroveService;
 import com.huawei.openstack4j.openstack.trove.internal.TroveVersionService;
+import com.huawei.openstack4j.openstack.vpc.internal.BandwidthService;
+import com.huawei.openstack4j.openstack.vpc.internal.PrivateipService;
+import com.huawei.openstack4j.openstack.vpc.internal.PublicipService;
+import com.huawei.openstack4j.openstack.vpc.internal.VpcService;
+import com.huawei.openstack4j.openstack.vpc.internal.VpcServices;
 import com.huawei.openstack4j.openstack.workflow.internal.ActionDefinitionServiceImpl;
 import com.huawei.openstack4j.openstack.workflow.internal.WorkbookDefinitionServiceImpl;
 import com.huawei.openstack4j.openstack.workflow.internal.WorkflowDefinitionServiceImpl;
@@ -704,6 +709,17 @@ public class DefaultAPIProvider implements APIProvider {
 		bind(VersionService.class, VersionService.class);
 		bind(com.huawei.openstack4j.openstack.maas.internal.TaskService.class,
 				com.huawei.openstack4j.openstack.maas.internal.TaskService.class);
+		
+		// vpc
+		bind(VpcService.class, VpcService.class);
+		bind(VpcServices.class,VpcServices.class);
+		bind(com.huawei.openstack4j.openstack.vpc.internal.SubnetService.class,com.huawei.openstack4j.openstack.vpc.internal.SubnetService.class);
+		bind(PublicipService.class,PublicipService.class);
+		bind(BandwidthService.class,BandwidthService.class);
+		bind(com.huawei.openstack4j.openstack.vpc.internal.QuotaService.class,com.huawei.openstack4j.openstack.vpc.internal.QuotaService.class);
+		bind(PrivateipService.class,PrivateipService.class);
+		bind(com.huawei.openstack4j.openstack.vpc.internal.SecurityGroupService.class,com.huawei.openstack4j.openstack.vpc.internal.SecurityGroupService.class);
+		bind(com.huawei.openstack4j.openstack.vpc.internal.PortService.class,com.huawei.openstack4j.openstack.vpc.internal.PortService.class);
 
 	}
 
