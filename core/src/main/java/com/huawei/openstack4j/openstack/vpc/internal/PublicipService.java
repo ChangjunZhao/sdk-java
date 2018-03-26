@@ -97,7 +97,7 @@ public class PublicipService extends BaseVpcServices{
 	 * @return
 	 */
 	public ActionResponse delete(String publicipId){
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(publicipId), "parameter `publicips` should not be empty");
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(publicipId), "parameter `publicipId` should not be empty");
 		return deleteWithResponse(uri("/publicips/%s", publicipId)).execute();
 	}
 

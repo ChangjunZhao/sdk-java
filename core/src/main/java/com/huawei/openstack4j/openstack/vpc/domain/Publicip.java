@@ -89,7 +89,7 @@ public class Publicip implements ModelEntity{
 	 * create time
 	 */
 	@JsonProperty("create_time")
-	@JsonFormat(pattern = DateTimeUtils.FORMAT_YMDTHMSZONE)
+	@JsonFormat(pattern = DateTimeUtils.FORMAT_YMDHMS)
 	Date createTime;
 	
 	/**
