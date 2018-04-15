@@ -15,11 +15,13 @@
  *******************************************************************************/
 package com.huawei.openstack4j.openstack.compute.domain;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.huawei.openstack4j.model.compute.VolumeAttachment;
-
+import com.huawei.openstack4j.openstack.common.ListResult;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -83,6 +85,19 @@ public class NovaVolumeAttachment implements VolumeAttachment {
 				.add("device", device).add("id", id).add("serverId", serverId)
 				.add("volumeId", volumeId).toString();
 
+	}
+	
+	public static class NovaVolumeAttachments extends ListResult<NovaVolumeAttachment> {
+
+		private static final long serialVersionUID = 1L;
+
+		@JsonProperty("volumeAttachments")
+		private List<NovaVolumeAttachment> volumeAttachments;
+
+		@Override
+        public List<NovaVolumeAttachment> value() {
+			return volumeAttachments;
+		}
 	}
 
 }

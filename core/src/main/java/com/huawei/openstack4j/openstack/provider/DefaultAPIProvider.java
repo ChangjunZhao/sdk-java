@@ -41,6 +41,7 @@ import com.huawei.openstack4j.api.compute.QuotaSetService;
 import com.huawei.openstack4j.api.compute.ServerGroupService;
 import com.huawei.openstack4j.api.compute.ServerService;
 import com.huawei.openstack4j.api.compute.ServerTagService;
+import com.huawei.openstack4j.api.compute.ServerTagV21Service;
 import com.huawei.openstack4j.api.compute.ServerV1Service;
 import com.huawei.openstack4j.api.compute.ext.FloatingIPDNSDomainService;
 import com.huawei.openstack4j.api.compute.ext.FloatingIPDNSEntryService;
@@ -241,6 +242,7 @@ import com.huawei.openstack4j.openstack.compute.internal.ext.InterfaceServiceImp
 import com.huawei.openstack4j.openstack.compute.internal.ext.MigrationServiceImpl;
 import com.huawei.openstack4j.openstack.compute.internal.ext.ZoneServiceImpl;
 import com.huawei.openstack4j.openstack.compute.v1.internal.ServerV1ServiceImpl;
+import com.huawei.openstack4j.openstack.compute.v21.internal.ServerTagV21ServiceImpl;
 import com.huawei.openstack4j.openstack.database.internal.DatabaseBackupService;
 import com.huawei.openstack4j.openstack.database.internal.DatabaseInstanceFlavorService;
 import com.huawei.openstack4j.openstack.database.internal.DatabaseInstanceService;
@@ -618,6 +620,7 @@ public class DefaultAPIProvider implements APIProvider {
 		bind(TaskService.class, TaskServiceImpl.class);
 		bind(TaskService.class, TaskServiceImpl.class);
 		bind(ServerTagService.class, ServerTagServiceImpl.class);
+		bind(ServerTagV21Service.class, ServerTagV21ServiceImpl.class);
 		bind(TelemetryAodhService.class, TelemetryAodhServiceImpl.class);
 		bind(AlarmAodhService.class, AlarmAodhServiceImpl.class);
 		bind(ServicesService.class, ServicesServiceImpl.class);

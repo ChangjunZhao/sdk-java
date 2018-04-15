@@ -17,7 +17,9 @@ package com.huawei.openstack4j.api.compute;
 
 import static org.testng.Assert.*;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Lists;
 
@@ -31,6 +33,7 @@ import com.huawei.openstack4j.model.compute.Server;
 import com.huawei.openstack4j.model.compute.Server.Status;
 import com.huawei.openstack4j.model.compute.ServerCreate;
 import com.huawei.openstack4j.model.compute.ServerPassword;
+import com.huawei.openstack4j.model.compute.VolumeAttachment;
 import com.huawei.openstack4j.model.compute.actions.EvacuateOptions;
 
 import okhttp3.mockwebserver.RecordedRequest;
@@ -47,6 +50,7 @@ public class ServerTests extends AbstractTest {
 	private static final String JSON_SERVER_CREATE = "/compute/server_create.json";
 	private static final String JSON_SERVER_EVACUATE = "/compute/server_evacuate.json";
 	private static final String JSON_SERVER_CONSOLE_OUTPUT = "/compute/server_console_output.json";
+	private static final String JSON_SERVER_ATTACHED_VOLUMES_LIST_OUTPUT = "/compute/server_attached_volumes_list_output.json";
 
 	@Test
 	public void listServer() throws Exception {
@@ -62,6 +66,39 @@ public class ServerTests extends AbstractTest {
 		assertEquals("192.168.0.3", s.getAddresses().getAddresses("private").get(0).getAddr());
 		assertEquals(Status.ACTIVE, s.getStatus());
 		assertEquals("new-server-test", s.getName());
+	}
+	
+	@Test
+	public void getMetadataItem() throws Exception{
+		respondWith("{\"meta\": {\"org\": \"huawei\"}}");
+		Map<String,String> metadataItem = osv3().compute().servers().getMetadataItem("kdsf-cj", "org");
+		assertEquals("huawei", metadataItem.get("org"));
+	}
+	
+	@Test
+	public void setMetadataItem() throws Exception{
+		respondWith("{\"meta\": {\"org\": \"huawei1\"}}");
+		Map<String,String> metadataItem = osv3().compute().servers().setMetadataItem("kdsf-cj", "org", "huawei1");
+		assertEquals("huawei1", metadataItem.get("org"));
+	}
+	
+	@Test
+	public void listAttachedVolumes() throws Exception{
+		respondWith(JSON_SERVER_ATTACHED_VOLUMES_LIST_OUTPUT);
+		List<? extends VolumeAttachment> attachedVolumes = osv3().compute().servers().listAttachedVolumes("4d8c3732-a248-40ed-bebc-539a6ffd25c0");
+		assertEquals(attachedVolumes.size(),2);
+		assertEquals(attachedVolumes.get(0).getDevice(),"/dev/sdd");
+	}
+	
+	@Test
+	public void getAttachVolume() throws Exception{
+		respondWith("{\"volumeAttachment\": "
+				+ "{\"device\": \"/dev/sdd\","
+				+ "\"id\": \"a26887c6-c47b-4654-abb5-dfadf7d3f803\","
+				+ "\"serverId\": \"4d8c3732-a248-40ed-bebc-539a6ffd25c0\","
+				+ "\"volumeId\": \"a26887c6-c47b-4654-abb5-dfadf7d3f803\"}}");
+		VolumeAttachment volumeAttachment = osv3().compute().servers().getAttachVolume("4d8c3732-a248-40ed-bebc-539a6ffd25c0", "a26887c6-c47b-4654-abb5-dfadf7d3f803");
+		assertEquals(volumeAttachment.getDevice(),"/dev/sdd");
 	}
 
 	@Test(expectedExceptions = ServerResponseException.class, invocationCount = 10)

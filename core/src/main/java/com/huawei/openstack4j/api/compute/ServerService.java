@@ -244,6 +244,23 @@ public interface ServerService {
     VolumeAttachment attachVolume(String serverId, String volumeId, String device);
     
     /**
+     * get volumeAttachment by serverId and volumeId
+     * 
+     * @param serverId the server identifier
+     * @param volumeId the volume identifier
+     * @return volumeAttachment or null if not applicable
+     */
+    VolumeAttachment getAttachVolume(String serverId, String volumeId);
+    
+    /**
+     * Show Attached Volumes 
+     * 
+     * @param serverId the server identifier
+     * @return list of all volumeAttachments
+     */
+    List<? extends VolumeAttachment> listAttachedVolumes(String serverId);
+    
+    /**
      * Changes the admin/root password on the server
      * 
      * @param serverId the server identifier
@@ -318,6 +335,22 @@ public interface ServerService {
      * @return Map of metadata of key and value
      */
     Map<String, String> getMetadata(String serverId);
+    
+    /**
+     * Get metadata item via the specified {@code key} and {@code serverId}
+     * 
+     * @param serverId the server identifier
+     * @return Map of metadata of key and value
+     */
+    Map<String, String> getMetadataItem(String serverId,String key);
+    
+    /**
+     * Get metadata item via the specified {@code key} and {@code serverId}
+     * 
+     * @param serverId the server identifier
+     * @return Map of metadata of key and value
+     */
+    Map<String, String> setMetadataItem(String serverId,String key, String value);
     
     /**
      * Creates or replaces metadata items for the specified server

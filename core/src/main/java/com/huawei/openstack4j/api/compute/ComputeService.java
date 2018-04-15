@@ -145,6 +145,12 @@ public interface ComputeService extends RestService {
 	 */
 	ServerTagService serverTags();
 	
+	/**
+	 * Server Tag Management Service V2.1
+	 * @return ServerTag Service V2.1
+	 */
+	ServerTagV21Service serverTagsV21();
+	
     /**
      *  Compute services service
      *  

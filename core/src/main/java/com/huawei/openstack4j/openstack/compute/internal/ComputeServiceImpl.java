@@ -30,6 +30,7 @@ import com.huawei.openstack4j.api.compute.QuotaSetService;
 import com.huawei.openstack4j.api.compute.ServerGroupService;
 import com.huawei.openstack4j.api.compute.ServerService;
 import com.huawei.openstack4j.api.compute.ServerTagService;
+import com.huawei.openstack4j.api.compute.ServerTagV21Service;
 import com.huawei.openstack4j.api.compute.ServerV1Service;
 import com.huawei.openstack4j.api.compute.ext.FloatingIPDNSService;
 import com.huawei.openstack4j.api.compute.ext.HypervisorService;
@@ -161,6 +162,14 @@ public class ComputeServiceImpl extends BaseComputeServices implements ComputeSe
 	@Override
 	public ServerTagService serverTags() {
 		return Apis.get(ServerTagService.class);
+	}
+	
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public ServerTagV21Service serverTagsV21() {
+		return Apis.get(ServerTagV21Service.class);
 	}
 	
     @Override

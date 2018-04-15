@@ -52,6 +52,7 @@ import com.huawei.openstack4j.openstack.common.Metadata;
 import com.huawei.openstack4j.openstack.compute.domain.AdminPass;
 import com.huawei.openstack4j.openstack.compute.domain.ConsoleOutput;
 import com.huawei.openstack4j.openstack.compute.domain.ConsoleOutputOptions;
+import com.huawei.openstack4j.openstack.compute.domain.MetadataItem;
 import com.huawei.openstack4j.openstack.compute.domain.NovaPassword;
 import com.huawei.openstack4j.openstack.compute.domain.NovaServer;
 import com.huawei.openstack4j.openstack.compute.domain.NovaServer.Servers;
@@ -59,6 +60,7 @@ import com.huawei.openstack4j.openstack.compute.domain.NovaServerCreate;
 import com.huawei.openstack4j.openstack.compute.domain.NovaServerUpdate;
 import com.huawei.openstack4j.openstack.compute.domain.NovaVNCConsole;
 import com.huawei.openstack4j.openstack.compute.domain.NovaVolumeAttachment;
+import com.huawei.openstack4j.openstack.compute.domain.NovaVolumeAttachment.NovaVolumeAttachments;
 import com.huawei.openstack4j.openstack.compute.domain.actions.BackupAction;
 import com.huawei.openstack4j.openstack.compute.domain.actions.BasicActions;
 import com.huawei.openstack4j.openstack.compute.domain.actions.BasicActions.ChangePassword;
@@ -354,6 +356,24 @@ public class ServerServiceImpl extends BaseComputeServices implements ServerServ
 				.entity(NovaVolumeAttachment.create(volumeId, device))
 				.execute(ExecutionOptions.<NovaVolumeAttachment> create(PropagateOnStatus.on(404)));
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public VolumeAttachment getAttachVolume(String serverId, String volumeId) {
+		return get(NovaVolumeAttachment.class, uri("/servers/%s/os-volume_attachments/%s", serverId,volumeId))
+				.execute();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<? extends VolumeAttachment> listAttachedVolumes(String serverId) {
+		Invocation<NovaVolumeAttachments> volumeAttachmentInvocation = get(NovaVolumeAttachments.class, uri("/servers/%s/os-volume_attachments", serverId));
+		return volumeAttachmentInvocation.execute().getList();
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -454,6 +474,29 @@ public class ServerServiceImpl extends BaseComputeServices implements ServerServ
 		return put(Metadata.class, uri("/servers/%s/metadata", serverId)).entity(Metadata.toMetadata(metadata))
 				.execute();
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Map<String, String> getMetadataItem(String serverId, String key) {
+		checkNotNull(serverId);
+		checkNotNull(key);
+		return get(MetadataItem.class, uri("/servers/%s/metadata/%s", serverId,key)).execute();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Map<String, String> setMetadataItem(String serverId, String key, String value) {
+		checkNotNull(serverId);
+		checkNotNull(value);
+		HashMap<String,String> metadataMap = new HashMap<String,String>();
+		metadataMap.put(key, value);
+		return put(MetadataItem.class, uri("/servers/%s/metadata/%s", serverId, key)).entity(MetadataItem.toMetadataItem(metadataMap))
+				.execute();
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -513,4 +556,5 @@ public class ServerServiceImpl extends BaseComputeServices implements ServerServ
 		return post(AdminPass.class, uri("/servers/%s/action", serverId)).entity(EvacuateAction.create(options))
 				.execute();
 	}
+	
 }
