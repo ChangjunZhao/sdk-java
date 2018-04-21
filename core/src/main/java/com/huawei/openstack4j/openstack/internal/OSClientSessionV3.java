@@ -18,6 +18,10 @@ package com.huawei.openstack4j.openstack.internal;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.slf4j.LoggerFactory;
@@ -90,7 +94,29 @@ public class OSClientSessionV3 extends OSClientSession<OSClientSessionV3, OSClie
 		this.config = config;
 		this.perspective = perspective;
 		this.provider = provider;
+		if(config != null && config.getMicroversions() != null && config.getMicroversions().size()>0){
+			initMicroversionsHeader();
+		}
 		sessions.set(this);
+	}
+	
+	/**
+	 * A client specifies the microversion of the API they want by using the following HTTP header:
+	 * X-OpenStack-Nova-API-Version: 2.4
+	 * Starting with microversion 2.27 it is also correct to use the following header to specify the microversion:
+	 * OpenStack-API-Version: compute 2.27
+	 */
+	private void initMicroversionsHeader(){
+		Map<String,String> microversions = new HashMap<String,String>();
+		List<String> servicesStrList = new LinkedList<String>();
+		for (Map.Entry<String, String> entry : config.getMicroversions().entrySet()) {
+			servicesStrList.add(entry.getKey() + " " + entry.getValue());
+			if("compute".equals(entry.getKey())){
+				microversions.put("X-OpenStack-Nova-API-Version", entry.getValue());
+			}
+		}
+		microversions.put("OpenStack-API-Version", String.join(",", servicesStrList));
+		this.headers(microversions);
 	}
 
 	@SuppressWarnings("unused")

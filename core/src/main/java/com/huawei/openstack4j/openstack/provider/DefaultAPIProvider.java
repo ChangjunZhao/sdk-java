@@ -43,6 +43,7 @@ import com.huawei.openstack4j.api.compute.ServerService;
 import com.huawei.openstack4j.api.compute.ServerTagService;
 import com.huawei.openstack4j.api.compute.ServerTagV21Service;
 import com.huawei.openstack4j.api.compute.ServerV1Service;
+import com.huawei.openstack4j.api.compute.ServerV21Service;
 import com.huawei.openstack4j.api.compute.ext.FloatingIPDNSDomainService;
 import com.huawei.openstack4j.api.compute.ext.FloatingIPDNSEntryService;
 import com.huawei.openstack4j.api.compute.ext.FloatingIPDNSService;
@@ -243,6 +244,7 @@ import com.huawei.openstack4j.openstack.compute.internal.ext.MigrationServiceImp
 import com.huawei.openstack4j.openstack.compute.internal.ext.ZoneServiceImpl;
 import com.huawei.openstack4j.openstack.compute.v1.internal.ServerV1ServiceImpl;
 import com.huawei.openstack4j.openstack.compute.v21.internal.ServerTagV21ServiceImpl;
+import com.huawei.openstack4j.openstack.compute.v21.internal.ServerV21ServiceImpl;
 import com.huawei.openstack4j.openstack.database.internal.DatabaseBackupService;
 import com.huawei.openstack4j.openstack.database.internal.DatabaseInstanceFlavorService;
 import com.huawei.openstack4j.openstack.database.internal.DatabaseInstanceService;
@@ -462,6 +464,7 @@ public class DefaultAPIProvider implements APIProvider {
 		bind(ComputeImageService.class, ComputeImageServiceImpl.class);
 		bind(ServerService.class, ServerServiceImpl.class);
 		bind(ServerV1Service.class, ServerV1ServiceImpl.class);
+		bind(ServerV21Service.class, ServerV21ServiceImpl.class);
 		bind(QuotaSetService.class, QuotaSetServiceImpl.class);
 		bind(HostService.class, HostServiceImpl.class);
 		bind(NetworkingService.class, NetworkingServiceImpl.class);

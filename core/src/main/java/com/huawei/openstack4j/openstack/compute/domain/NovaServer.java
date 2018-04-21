@@ -94,6 +94,42 @@ public class NovaServer implements Server {
 	private Date terminatedAt;
 	@JsonProperty("os-extended-volumes:volumes_attached")
 	private List<IdResourceEntity> osExtendedVolumesAttached;
+	
+	private String description;
+	
+	@JsonProperty("host_status")
+	private HostStatus hostStatus;
+	
+	@JsonProperty("OS-EXT-SRV-ATTR:hostname")
+	private String hostname;
+	
+	@JsonProperty("OS-EXT-SRV-ATTR:reservation_id")
+	private String reservationId;
+	
+	@JsonProperty("OS-EXT-SRV-ATTR:launch_index")
+	private Integer launchIndex;
+	
+	@JsonProperty("OS-EXT-SRV-ATTR:kernel_id")
+	private String kernelId;
+	
+	@JsonProperty("OS-EXT-SRV-ATTR:ramdisk_id")
+	private String ramdiskId;
+	
+	@JsonProperty("OS-EXT-SRV-ATTR:root_device_name")
+	private String rootDeviceName;
+	
+	@JsonProperty("OS-EXT-SRV-ATTR:user_data")
+	private String userData;
+	
+	@JsonProperty("locked")
+	private Boolean locked;
+	
+	@JsonProperty("tags")
+	private List<String> tags;
+	
+	@JsonProperty("os:scheduler_hints")
+	private Map<String, String> schedulerHints;
+	
 	private String uuid;
 	private String adminPass;
 	
@@ -317,6 +353,102 @@ public class NovaServer implements Server {
 	public Integer getMinCount() {
 		return minCount;
 	}
+	
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getDescription() {
+		return description;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public HostStatus getHostStatus() {
+		return hostStatus;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getHostname() {
+		return hostname;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getReservationId() {
+		return reservationId;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Integer getLaunchIndex() {
+		return launchIndex;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getKernelId() {
+		return kernelId;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getRamdiskId() {
+		return ramdiskId;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getRootDeviceName() {
+		return rootDeviceName;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getUserData() {
+		return userData;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Boolean getLocked() {
+		return locked;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<String> getTags() {
+		return tags;
+	}
+
+	/* 
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Map<String, String> getSchedulerHints() {
+		return schedulerHints;
+	}
 
 	@Override
 	public String toString() {
@@ -327,7 +459,7 @@ public class NovaServer implements Server {
 				   .add("launched at", launchedAt).add("tenantId", tenantId).add("hostId", hostId)
 				   .add("addresses", addresses).add("hypervisor host", hypervisorHostname)
 				   .add("uuid", uuid).add("powerstate", powerState).add("fault", fault).add("instanceName", instanceName)
-				   .add("vmState", vmState).add("metadata", metadata)
+				   .add("vmState", vmState).add("metadata", metadata).add("rootDeviceName", rootDeviceName).add("reservationId", reservationId)
 				   .toString();
 	}
 

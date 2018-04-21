@@ -1,0 +1,80 @@
+{
+    "servers": [{
+        "tenant_id": "57e98940a77f4bb988a21a7d0603a626",
+        "addresses": {
+            "773c3c42-d315-417b-9063-87091713148c": [{
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:70:5b:f0",
+                "OS-EXT-IPS:type": "fixed",
+                "addr": "192.168.1.215",
+                "version": 4
+            }, {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:70:5b:f0",
+                "OS-EXT-IPS:type": "floating",
+                "addr": "117.78.46.129",
+                "version": 4
+            }]
+        },
+        "metadata": {},
+        "OS-EXT-STS:task_state": null,
+        "description": "ecs-SDK",
+        "OS-EXT-SRV-ATTR:hostname": "ecs-sdk",
+        "OS-DCF:diskConfig": "MANUAL",
+        "OS-EXT-AZ:availability_zone": "cn-north-1a",
+        "links": [{
+            "rel": "self",
+            "href": "https://None/v2.1/57e98940a77f4bb988a21a7d0603a626/servers/e1040c67-b130-41ee-9405-07c6c6c20208"
+        }, {
+            "rel": "bookmark",
+            "href": "https://None/57e98940a77f4bb988a21a7d0603a626/servers/e1040c67-b130-41ee-9405-07c6c6c20208"
+        }],
+        "OS-EXT-STS:power_state": 1,
+        "id": "e1040c67-b130-41ee-9405-07c6c6c20208",
+        "os-extended-volumes:volumes_attached": [{
+            "delete_on_termination": true,
+            "id": "39259f3b-99a4-4ef9-84d1-803c86ebf479"
+        }],
+        "locked": false,
+        "OS-EXT-SRV-ATTR:kernel_id": "",
+        "OS-EXT-SRV-ATTR:host": "pod04.cnnorth1a",
+        "OS-EXT-SRV-ATTR:ramdisk_id": "",
+        "image": {
+            "links": [{
+                "rel": "bookmark",
+                "href": "https://None/57e98940a77f4bb988a21a7d0603a626/images/1189efbf-d48b-46ad-a823-94b942e2a000"
+            }],
+            "id": "1189efbf-d48b-46ad-a823-94b942e2a000"
+        },
+        "accessIPv4": "",
+        "OS-SRV-USG:terminated_at": null,
+        "accessIPv6": "",
+        "OS-EXT-SRV-ATTR:launch_index": 0,
+        "created": "2018-04-13T09:11:22Z",
+        "OS-EXT-SRV-ATTR:user_data": "IyEvYmluL2Jhc2gKZWNobyAncm9vdDokNiRtdzRFYTMkcWdLdU5vTkI0bDJ6bXZGSm9FL01EWWlPYk96UTI4MzlvYmJIN0lPOEFLcUMyT1lMZHhBazZBVDdzeFF2eTVrMXJiNGh4cTN4YnNmU1FIakxCQnMwUy8nIHwgY2hwYXNzd2QgLWU7",
+        "hostId": "0f81c2a22d16f5804ffe38b8f623625f3fb349ede1a7bc7488acf8e2",
+        "OS-EXT-SRV-ATTR:reservation_id": "r-hsuokwaw",
+        "OS-EXT-SRV-ATTR:root_device_name": "/dev/vda",
+        "host_status": "UP",
+        "OS-EXT-SRV-ATTR:hypervisor_hostname": "nova010@42",
+        "tags": [],
+        "key_name": null,
+        "flavor": {
+            "links": [{
+                "rel": "bookmark",
+                "href": "https://None/57e98940a77f4bb988a21a7d0603a626/flavors/s2.large.2"
+            }],
+            "id": "s2.large.2"
+        },
+        "security_groups": [{
+            "name": "default"
+        }],
+        "config_drive": "",
+        "OS-EXT-STS:vm_state": "active",
+        "OS-EXT-SRV-ATTR:instance_name": "instance-00149133",
+        "user_id": "63ad2e62380444bb826fefd9c4ddef0f",
+        "name": "ecs-SDK",
+        "progress": 0,
+        "OS-SRV-USG:launched_at": "2018-04-13T09:11:49.372240",
+        "updated": "2018-04-13T09:12:20Z",
+        "status": "ACTIVE"
+    }]
+}

@@ -15,6 +15,8 @@
  *******************************************************************************/
 package com.huawei.openstack4j.core.transport;
 
+import java.util.Map;
+
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 
@@ -32,6 +34,7 @@ public final class Config {
 	public static final Config DEFAULT = new Config();
 
 	private String language = DEFAULT_LANGUAGE;
+	private Map<String, String> microversions;
 	private int connectTimeout;
 	private int readTimeout;
 	private SSLContext sslContext;
@@ -62,6 +65,17 @@ public final class Config {
 	 */
 	public Config withLanguage(String language) {
 		this.language = language;
+		return this;
+	}
+	
+	/**
+	 * Sets the microversions to use for some particular OpenStack services, "compute" for example
+	 * 
+	 * @param microversions 	the microversions map
+	 * @return {@link Config} instance
+	 */
+	public Config withMicroversions(Map<String,String> microversions) {
+		this.microversions = microversions;
 		return this;
 	}
 
@@ -255,6 +269,10 @@ public final class Config {
 
 	public ProxyHost getProxy() {
 		return proxy;
+	}
+
+	public Map<String, String> getMicroversions() {
+		return microversions;
 	}
 
 	@Override

@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.huawei.openstack4j.model.ModelEntity;
 import com.huawei.openstack4j.model.common.Link;
+import com.huawei.openstack4j.model.compute.Server.HostStatus;
 
 /**
  * A server is a virtual machine instance on a compute based system.  
@@ -111,6 +112,22 @@ public interface Server extends ModelEntity {
 			if (value != null && value.equalsIgnoreCase("auto"))
 				return DiskConfig.AUTO;
 			return DiskConfig.MANUAL;
+		}
+	}
+	
+	enum HostStatus{
+		UP,UNKNOWN,DOWN,MAINTENANCE,NOHOSTSTATUS;
+		
+		@JsonCreator
+		public static HostStatus forValue(String value) {
+			if (value != null && !"".equals(value))
+			{
+				for (HostStatus s : HostStatus.values()) {
+					if (s.name().equalsIgnoreCase(value))
+						return s;
+				}
+			}
+			return HostStatus.NOHOSTSTATUS;
 		}
 	}
 
@@ -304,5 +321,77 @@ public interface Server extends ModelEntity {
      * @return batch boot server min count
      */
     Integer getMinCount();
+    
+    /**
+     * 
+     * @return ecs description
+     */
+    String getDescription();
+    
+    /**
+     * 
+     * @return nova-compute status
+     */
+	HostStatus getHostStatus();
+
+	/**
+     * 
+     * @return host name
+     */
+	String getHostname();
+
+	/**
+     * 
+     * @return reservation id
+     */
+	String getReservationId();
+
+	/**
+     * 
+     * @return launch index
+     */
+	Integer getLaunchIndex();
+
+	/**
+     * 
+     * @return kernel id
+     */
+	String getKernelId();
+
+	/**
+     * 
+     * @return ramdisk id
+     */
+	String getRamdiskId();
+
+	/**
+     * 
+     * @return root device name
+     */
+	String getRootDeviceName();
+
+	/**
+     * 
+     * @return user data
+     */
+	String getUserData();
+
+	/**
+     * 
+     * @return server is locked?
+     */
+	Boolean getLocked();
+
+	/**
+     * 
+     * @return server tags
+     */
+	List<String> getTags();
+
+	/**
+     * 
+     * @return scheduler hints
+     */
+	Map<String, String> getSchedulerHints();
 
 }
