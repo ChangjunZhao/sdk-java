@@ -48,32 +48,32 @@ public class SubnetCreate implements ModelEntity{
 	/**
 	 * vpc name
 	 */
-	String name;
+	private String name;
 	
 	/**
 	 * vpc subnet cidr
 	 */
-	String cidr;
+	private String cidr;
 	
 	@JsonProperty("gateway_ip")
-	String gatewayIp;
+	private String gatewayIp;
 	
 	@JsonProperty("dhcp_enable")
-	boolean dhcpEnable;
+	private boolean dhcpEnable;
 	
 	@JsonProperty("primary_dns")
-	String primaryDns;
+	private String primaryDns;
 	
 	@JsonProperty("secondary_dns")
-	String secondaryDns;
+	private String secondaryDns;
 	
-	List<String> dnsList;
+	private List<String> dnsList;
 	
 	@JsonProperty("availability_zone")
-	String availabilityZone;
+	private String availabilityZone;
 	
 	@JsonProperty("vpc_id")
-	String vpcId;
+	private String vpcId;
 	
 	/**
 	@JsonProperty("port_security_enable")

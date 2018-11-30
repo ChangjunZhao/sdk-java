@@ -26,9 +26,9 @@ import com.huawei.openstack4j.openstack.internal.BaseOpenStackService;
  * @author ChangjunZhao
  * @date   2018-03-25
  */
-public class BaseVpcServices extends BaseOpenStackService {
+public class BaseVirtualPrivateCloudService extends BaseOpenStackService {
 	
-	public BaseVpcServices(){
+	public BaseVirtualPrivateCloudService(){
 		super(ServiceType.VPC);
 	}
 	

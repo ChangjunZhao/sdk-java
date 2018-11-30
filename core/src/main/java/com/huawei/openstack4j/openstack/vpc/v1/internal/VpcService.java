@@ -30,7 +30,7 @@ import com.huawei.openstack4j.openstack.vpc.v1.domain.Vpc.Vpcs;
  * @author ChangjunZhao
  * @date   2018-03-25
  */
-public class VpcService extends BaseVpcServices{
+public class VpcService extends BaseVirtualPrivateCloudService{
 	
 	/**
 	 * Querying VPCs

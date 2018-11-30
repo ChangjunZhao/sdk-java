@@ -38,15 +38,15 @@ public class VpcCreate implements ModelEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String name;
+	private String name;
 	
-	String cidr;
+	private String cidr;
 	
 	/**
 	 * enterprise project id
 	 */
 	@JsonProperty("enterprise_project_id")
-	String enterpriseProjectId;
+	private String enterpriseProjectId;
 	
 	
 }

@@ -46,28 +46,28 @@ public class Vpc implements ModelEntity{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String id;
+	private String id;
 
 	/**
 	 * vpc name
 	 */
-	String name;
+	private String name;
 	
 	/**
 	 * vpc subnet cidr
 	 */
-	String cidr;
+	private String cidr;
 
 	/**
 	 * vpc status
 	 */
-	String status;
+	private String status;
 	
 	/**
 	 * enterprise project id
 	 */
 	@JsonProperty("enterprise_project_id")
-	String enterpriseProjectId;
+	private String enterpriseProjectId;
 	
 	public static class Vpcs extends ListResult<Vpc> {
 

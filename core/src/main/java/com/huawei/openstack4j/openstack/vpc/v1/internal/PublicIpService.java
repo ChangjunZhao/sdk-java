@@ -30,7 +30,7 @@ import com.huawei.openstack4j.openstack.vpc.v1.domain.PublicIp.Publicips;
  * @author ChangjunZhao
  * @date   2018-03-25
  */
-public class PublicIpService extends BaseVpcServices{
+public class PublicIpService extends BaseVirtualPrivateCloudService{
 	
 	/**
 	 * Querying Elastic IP Addresses

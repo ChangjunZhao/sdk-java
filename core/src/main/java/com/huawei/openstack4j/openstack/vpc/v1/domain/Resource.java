@@ -50,22 +50,22 @@ public class Resource implements ModelEntity{
 	/**
 	 * quota type
 	 */
-	String type;
+	private String type;
 
 	/**
 	 * used quota
 	 */
-	Integer used;
+	private Integer used;
 	
 	/**
 	 * resource quota
 	 */
-	Integer quota;
+	private Integer quota;
 
 	/**
 	 * The minimum quota allowed to modify
 	 */
-	Integer min;
+	private Integer min;
 	
 	@JsonRootName("quotas")
 	public static class Quotas extends ListResult<Resource> {

@@ -48,30 +48,30 @@ public class PrivateIp implements ModelEntity{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String id;
+	private String id;
 
 	/**
 	 * subnet id
 	 */
 	@JsonProperty("subnet_id")
-	String subnetId;
+	private String subnetId;
 	
 	/**
 	 * tenant id
 	 */
 	@JsonProperty("tenant_id")
-	String tenantId;
+	private String tenantId;
 	
 	@JsonProperty("device_owner")
-	String deviceOwner;
+	private String deviceOwner;
 	
 	@JsonProperty("ip_address")
-	String ipAddress;
+	private String ipAddress;
 
 	/**
 	 * private ip status
 	 */
-	String status;
+	private String status;
 	
 	@Setter
 	public static class Privateips extends ListResult<PrivateIp> {

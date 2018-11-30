@@ -48,12 +48,12 @@ public class AllowAddressPair implements ModelEntity{
 	 * mac address
 	 */
 	@JsonProperty("mac_address")
-	String macAddress;
+	private String macAddress;
 
 	/**
 	 * ip address
 	 */
 	@JsonProperty("ip_address")
-	String ipAddress;
+	private String ipAddress;
 	
 }

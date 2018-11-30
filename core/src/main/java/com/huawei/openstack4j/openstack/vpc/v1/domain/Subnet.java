@@ -46,48 +46,48 @@ public class Subnet implements ModelEntity{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String id;
+	private String id;
 
 	/**
 	 * vpc name
 	 */
-	String name;
+	private String name;
 	
 	/**
 	 * vpc subnet cidr
 	 */
-	String cidr;
+	private String cidr;
 	
 	@JsonProperty("gateway_ip")
-	String gatewayIp;
+	private String gatewayIp;
 	
 	@JsonProperty("dhcp_enable")
-	boolean dhcpEnable;
+	private boolean dhcpEnable;
 	
 	@JsonProperty("primary_dns")
-	String primaryDns;
+	private String primaryDns;
 	
 	@JsonProperty("secondary_dns")
-	String secondaryDns;
+	private String secondaryDns;
 	
-	List<String> dnsList;
+	private List<String> dnsList;
 	
 	@JsonProperty("availability_zone")
-	String availabilityZone;
+	private String availabilityZone;
 	
 	@JsonProperty("vpc_id")
-	String vpcId;
+	private String vpcId;
 
 	/**
 	 * vpc status
 	 */
-	String status;
+	private String status;
 	
 	@JsonProperty("neutron_network_id")
-	String neutronNetworkId;
+	private String neutronNetworkId;
 	
 	@JsonProperty("neutron_subnet_id")
-	String neutronSubnetId;
+	private String neutronSubnetId;
 	
 	public static class Subnets extends ListResult<Subnet> {
 

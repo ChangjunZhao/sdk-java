@@ -48,119 +48,119 @@ public class Port implements ModelEntity{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String id;
+	private String id;
 
 	/**
 	 * port name
 	 */
-	String name;
+	private String name;
 	
 	/**
 	 * network id
 	 */
 	@JsonProperty("network_id")
-	String networkId;
+	private String networkId;
 	
 	/**
 	 * admin state up
 	 */
 	@JsonProperty("admin_state_up")
-	Boolean adminStateUp;
+	private Boolean adminStateUp;
 	
 	/**
 	 * mac address
 	 */
 	@JsonProperty("mac_address")
-	String macAddress;
+	private String macAddress;
 	
 	/**
 	 * fixed ips
 	 */
 	@JsonProperty("fixed_ips")
-	List<FixedIp> fixedIps;
+	private List<FixedIp> fixedIps;
 	
 	/**
 	 * device id
 	 */
 	@JsonProperty("device_id")
-	String deviceId;
+	private String deviceId;
 	
 	/**
 	 * device owner
 	 */
 	@JsonProperty("device_owner")
-	String deviceOwner;
+	private String deviceOwner;
 	
 	/**
 	 * tenant id
 	 */
 	@JsonProperty("tenant_id")
-	String tenantId;
+	private String tenantId;
 
 	/**
 	 * status
 	 */
-	String status;
+	private String status;
 	
 	/**
 	 * security groups
 	 */
 	@JsonProperty("security_groups")
-	List<String> securityGroups;
+	private List<String> securityGroups;
 	
 	/**
 	 * allowed address pairs
 	 */
 	@JsonProperty("allowed_address_pairs")
-	List<AllowAddressPair> allowedAddressPairs;
+	private List<AllowAddressPair> allowedAddressPairs;
 	
 	/**
 	 * extra dhcp opts
 	 */
 	@JsonProperty("extra_dhcp_opts")
-	List<ExtraDhcpOpt> extraDhcpOpts;
+	private List<ExtraDhcpOpt> extraDhcpOpts;
 	
 	/**
 	 * binding:vif_type
 	 */
 	@JsonProperty("binding:vif_type")
-	String bindingVifType;
+	private String bindingVifType;
 	
 	/**
 	 * binding:vif_details
 	 */
 	@JsonProperty("binding:vif_details")
-	Hashtable<String, Object> bindingVifDetails;
+	private Hashtable<String, Object> bindingVifDetails;
 	
 	/**
 	 * binding:host_id
 	 */
 	@JsonProperty("binding:host_id")
-	String bindingHostId;
+	private String bindingHostId;
 	
 	/**
 	 * binding:profile
 	 */
 	@JsonProperty("binding:profile")
-	Hashtable<String, Object> bindingProfile;
+	private Hashtable<String, Object> bindingProfile;
 	
 	/**
 	 * binding:vnic_type
 	 */
 	@JsonProperty("binding:vnic_type")
-	String bindingVnicType;
+	private String bindingVnicType;
 	
 	/**
 	 * dns assignment
 	 */
 	@JsonProperty("dns_assignment")
-	List<String> dnsAssignment;
+	private List<String> dnsAssignment;
 	
 	/**
 	 * dns name
 	 */
 	@JsonProperty("dns_name")
-	String dnsName;
+	private String dnsName;
 	
 	
 	public static class Ports extends ListResult<Port> {

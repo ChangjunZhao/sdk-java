@@ -47,18 +47,18 @@ public class PublicIpInfo implements ModelEntity{
 	 * publicip id
 	 */
 	@JsonProperty("publicip_id")
-	String publicipId;
+	private String publicipId;
 
 	/**
 	 * publicip address
 	 */
 	@JsonProperty("publicip_address")
-	String publicipAddress;
+	private String publicipAddress;
 	
 	/**
 	 * publicip type
 	 */
-	@JsonProperty("publicipType")
-	String publicip_type;
+	@JsonProperty("publicip_type")
+	private String publicipType;
 
 }

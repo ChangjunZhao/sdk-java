@@ -47,34 +47,34 @@ public class SecurityGroupRule implements ModelEntity{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String id;
+	private String id;
 
 	/**
 	 * security group id
 	 */
 	@JsonProperty("security_group_id")
-	String securityGroupId;
+	private String securityGroupId;
 	
 	/**
 	 * direction, egress or ingress
 	 */
-	String direction;
+	private String direction;
 	
 	/**
 	 * ethertype，IPv4 or IPv6
 	 */
-	String ethertype;
+	private String ethertype;
 	
 	/**
 	 * protocol，contains icmp，tcp，udp，and so on
 	 */
-	String protocol;
+	private String protocol;
 	
 	/**
 	 * port range min， 1~65535
 	 */
 	@JsonProperty("port_range_min")
-	Integer portRangeMin;
+	private Integer portRangeMin;
 	
 	/**
 	 * port range max，1~65535
@@ -86,13 +86,13 @@ public class SecurityGroupRule implements ModelEntity{
 	 * remote ip prefix
 	 */
 	@JsonProperty("remote_ip_prefix")
-	String remote_ip_prefix;
+	private String remoteIpPrefix;
 	
 	/**
 	 * remote group id
 	 */
 	@JsonProperty("remote_group_id")
-	String remoteGroupId;
+	private String remoteGroupId;
 	
 	public static class SecurityGroupRules extends ListResult<SecurityGroupRule> {
 

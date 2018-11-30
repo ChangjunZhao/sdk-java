@@ -48,17 +48,17 @@ public class BandWidth implements ModelEntity{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String id;
+	private String id;
 
 	/**
 	 * bandwidth name
 	 */
-	String name;
+	private String name;
 	
 	/**
 	 * bandwidth size
 	 */
-	Integer size;
+	private Integer size;
 
 	/**
 	 * 	带宽的共享类型。 共享类型枚举：PER，表示独享。 目前只支持独享。
@@ -70,37 +70,37 @@ public class BandWidth implements ModelEntity{
 	 * bandwidth share type
 	 */
 	@JsonProperty("publicip_info")
-	List<PublicIpInfo> publicipInfo;
+	private List<PublicIpInfo> publicipInfo;
 	
 	/**
 	 * bandwidth share type, PER or WHOLE
 	 */
 	@JsonProperty("tenant_id")
-	String tenantId;
+	private String tenantId;
 	
 	/**
 	 * bandwidth bandwidth type, bgp/union/double/telcom
 	 */
 	@JsonProperty("bandwidth_type")
-	String bandwidthType;
+	private String bandwidthType;
 	
 	/**
 	 * bandwidth charge mode, bandwidth or traffic
 	 */
 	@JsonProperty("charge_mode")
-	String chargeMode;
+	private String chargeMode;
 	
 	/**
 	 * Bandwidth billing info
 	 */
 	@JsonProperty("billing_info")
-	String billingInfo;
+	private String billingInfo;
 	
 	/**
 	 * enterprise project id
 	 */
 	@JsonProperty("enterprise_project_id")
-	String enterpriseProjectId;
+	private String enterpriseProjectId;
 	
 	public static class Bandwidths extends ListResult<BandWidth> {
 

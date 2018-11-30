@@ -29,7 +29,7 @@ import com.huawei.openstack4j.openstack.vpc.v1.domain.BandWidth.Bandwidths;
  * @author ChangjunZhao
  * @date   2018-03-25
  */
-public class BandWidthService extends BaseVpcServices{
+public class BandWidthService extends BaseVirtualPrivateCloudService{
 
 	/**
 	 * Querying Bandwidths

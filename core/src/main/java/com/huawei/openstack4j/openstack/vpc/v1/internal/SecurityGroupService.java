@@ -31,7 +31,7 @@ import com.huawei.openstack4j.openstack.vpc.v1.domain.SecurityGroupRule.Security
  * @author ChangjunZhao
  * @date   2018-03-25
  */
-public class SecurityGroupService extends BaseVpcServices{
+public class SecurityGroupService extends BaseVirtualPrivateCloudService{
 	
 	/**
 	 * Querying Security Groups
@@ -73,7 +73,7 @@ public class SecurityGroupService extends BaseVpcServices{
 	 * @return
 	 */
 	public SecurityGroup get(String securityGroupId){
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(securityGroupId), "parameter `privateipId` should not be empty");
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(securityGroupId), "parameter `securityGroupId` should not be empty");
 		return get(SecurityGroup.class, uri("/security-groups/%s",securityGroupId)).execute();
 	}
 	

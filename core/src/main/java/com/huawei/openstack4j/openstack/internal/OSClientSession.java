@@ -74,8 +74,6 @@ import com.huawei.openstack4j.openstack.message.notification.internal.Notificati
 import com.huawei.openstack4j.openstack.message.queue.internal.MessageQueueService;
 import com.huawei.openstack4j.openstack.tms.v1.internal.TagManagementService;
 import com.huawei.openstack4j.openstack.trove.internal.TroveService;
-import com.huawei.openstack4j.openstack.vpc.v1.internal.VpcService;
-import com.huawei.openstack4j.openstack.vpc.v1.internal.VpcServices;
 import com.huawei.openstack4j.openstack.vpc.v2.internal.VirtualPrivateCloudService;
 
 /**
@@ -535,8 +533,8 @@ public abstract class OSClientSession<R, T extends OSClient<T>> implements Endpo
 	  * Returns the VirtualPrivateCloud Service API
 	  * @return the VirtualPrivateCloudService
 	  */
-	 public VpcServices vpc(){
-		 return Apis.get(VpcServices.class);
+	 public com.huawei.openstack4j.openstack.vpc.v1.internal.VirtualPrivateCloudService vpc(){
+		 return Apis.get(com.huawei.openstack4j.openstack.vpc.v1.internal.VirtualPrivateCloudService.class);
 	 }
 	 
 	 public CdnServices cdn() {

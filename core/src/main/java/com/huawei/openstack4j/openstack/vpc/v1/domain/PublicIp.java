@@ -49,95 +49,95 @@ public class PublicIp implements ModelEntity{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String id;
+	private String id;
 
 	/**
 	 * publicip type
 	 */
-	String type;
+	private String type;
 	
 	/**
 	 * publicip status
 	 */
-	String status;
+	private String status;
 	
 	/**
 	 * Additional parameters, including order number, product number, etc.
 	 */
-	Profile profile;
+	private Profile profile;
 	
 	/**
 	 * public ip address
 	 */
 	@JsonProperty("public_ip_address")
-	String publicIpAddress;
+	private String publicIpAddress;
 	
 	/**
 	 * public ipv6 address
 	 */
 	@JsonProperty("public_ipv6_address")
-	String publicIpv6Address;
+	private String publicIpv6Address;
 	
 	/**
 	 * ip version
 	 */
 	@JsonProperty("ip_version")
-	int ipVersion;
+	private int ipVersion;
 	
 	/**
 	 * private ip address
 	 */
 	@JsonProperty("private_ip_address")
-	String privateIpAddress;
+	private String privateIpAddress;
 	
 	/**
 	 * port id
 	 */
 	@JsonProperty("port_id")
-	String portId;
+	private String portId;
 	
 	/**
 	 * tenant id
 	 */
 	@JsonProperty("tenant_id")
-	String tenantId;
+	private String tenantId;
 	
 	/**
 	 * create time
 	 */
 	@JsonProperty("create_time")
 	@JsonFormat(pattern = DateTimeUtils.FORMAT_YMDHMS)
-	Date createTime;
+	private Date createTime;
 	
 	/**
 	 * bandwidth id
 	 */
 	@JsonProperty("bandwidth_id")
-	String bandwidthId;
+	private String bandwidthId;
 	
 	/**
 	 * bandwidth size
 	 */
 	@JsonProperty("bandwidth_size")
-	Integer bandwidthSize;
+	private Integer bandwidthSize;
 	
 	/**
 	 * bandwidth share type
 	 */
 	@JsonProperty("bandwidth_share_type")
-	String bandwidthShareType;
+	private String bandwidthShareType;
 	
 	/**
 	 * bandwidth name
 	 */
 	@JsonProperty("bandwidth_name")
-	String bandwidthName;
+	private String bandwidthName;
 	
 	/**
 	 * enterprise project id
 	 */
 	@JsonProperty("enterprise_project_id")
-	String enterpriseProjectId;
+	private String enterpriseProjectId;
 	
 	public static class Publicips extends ListResult<PublicIp> {
 

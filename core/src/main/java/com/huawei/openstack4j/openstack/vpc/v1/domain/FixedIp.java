@@ -48,12 +48,12 @@ public class FixedIp implements ModelEntity{
 	 * subnet id
 	 */
 	@JsonProperty("subnet_id")
-	String subnetId;
+	private String subnetId;
 
 	/**
 	 * ip address
 	 */
 	@JsonProperty("ip_address")
-	String ipAddress;
+	private String ipAddress;
 	
 }

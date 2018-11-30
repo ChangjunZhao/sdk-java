@@ -48,12 +48,12 @@ public class ExtraDhcpOpt implements ModelEntity{
 	 * opt name
 	 */
 	@JsonProperty("opt_name")
-	String optName;
+	private String optName;
 
 	/**
 	 * opt value
 	 */
 	@JsonProperty("opt_value")
-	String optValue;
+	private String optValue;
 	
 }

@@ -47,29 +47,29 @@ public class SecurityGroup implements ModelEntity{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String id;
+	private String id;
 
 	/**
 	 * security group name
 	 */
-	String name;
+	private String name;
 	
-	String description;
+	private String description;
 	
 	@JsonProperty("vpc_id")
-	String vpcId;
+	private String vpcId;
 	
 	/**
 	 * security group rules
 	 */
 	@JsonProperty("security_group_rules")
-	List<SecurityGroupRule> securityGroupRules;
+	private List<SecurityGroupRule> securityGroupRules;
 	
 	/**
 	 * enterprise project id
 	 */
 	@JsonProperty("enterprise_project_id")
-	String enterpriseProjectId;
+	private String enterpriseProjectId;
 	
 	public static class SecurityGroups extends ListResult<SecurityGroup> {
 

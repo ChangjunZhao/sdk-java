@@ -23,7 +23,7 @@ import com.huawei.openstack4j.api.Apis;
  * @author ChangjunZhao
  * @date   2018-03-25
  */
-public class VpcServices extends BaseVpcServices {
+public class VirtualPrivateCloudService extends BaseVirtualPrivateCloudService {
 	
 	/**
 	 * Service implementation which provides methods for manipulation of vpcs

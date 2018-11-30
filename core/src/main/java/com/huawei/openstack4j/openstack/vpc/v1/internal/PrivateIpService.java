@@ -29,7 +29,7 @@ import com.huawei.openstack4j.openstack.vpc.v1.domain.PrivateIp.Privateips;
  * @author ChangjunZhao
  * @date   2018-03-25
  */
-public class PrivateIpService extends BaseVpcServices{
+public class PrivateIpService extends BaseVirtualPrivateCloudService{
 	
 	/**
 	 * Querying Private IP Addresses

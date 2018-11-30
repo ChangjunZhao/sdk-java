@@ -45,17 +45,17 @@ public class PublicIpApply implements ModelEntity{
 	/**
 	 * publicip
 	 */
-	PublicIp publicip;
+	private PublicIp publicip;
 
 	/**
 	 * bandwidth
 	 */
-	BandWidth bandwidth;
+	private BandWidth bandwidth;
 	
 	/**
 	 * enterprise project id
 	 */
 	@JsonProperty("enterprise_project_id")
-	String enterpriseProjectId;
+	private String enterpriseProjectId;
 
 }

@@ -48,24 +48,24 @@ public class Profile implements ModelEntity{
 	 * order id
 	 */
 	@JsonProperty("order_id")
-	String orderId;
+	private String orderId;
 
 	/**
 	 * product id
 	 */
 	@JsonProperty("product_id")
-	String productId;
+	private String productId;
 	
 	/**
 	 * region id
 	 */
 	@JsonProperty("region_id")
-	String regionId;
+	private String regionId;
 
 	/**
 	 * user id
 	 */
 	@JsonProperty("user_id")
-	String userId;
+	private String userId;
 
 }
