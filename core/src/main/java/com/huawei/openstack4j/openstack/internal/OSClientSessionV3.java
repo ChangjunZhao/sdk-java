@@ -95,7 +95,7 @@ public class OSClientSessionV3 extends OSClientSession<OSClientSessionV3, OSClie
 		this.config = config;
 		this.perspective = perspective;
 		this.provider = provider;
-		if(config != null && config.getMicroversions() != null && config.getMicroversions().size()>0){
+		if(config != null && config.getMicroVersions() != null && config.getMicroVersions().size()>0){
 			initMicroversionsHeader();
 		}
 		sessions.set(this);
@@ -110,7 +110,7 @@ public class OSClientSessionV3 extends OSClientSession<OSClientSessionV3, OSClie
 	private void initMicroversionsHeader(){
 		Map<String,String> microversions = new HashMap<String,String>();
 		List<String> servicesStrList = new LinkedList<String>();
-		for (Map.Entry<String, String> entry : config.getMicroversions().entrySet()) {
+		for (Map.Entry<String, String> entry : config.getMicroVersions().entrySet()) {
 			servicesStrList.add(entry.getKey() + " " + entry.getValue());
 			if("compute".equals(entry.getKey())){
 				microversions.put("X-OpenStack-Nova-API-Version", entry.getValue());

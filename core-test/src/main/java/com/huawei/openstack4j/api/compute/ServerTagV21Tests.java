@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 	Copyright 2016 ContainX and OpenStack4j                                          
+ * 	Copyright 2018 ContainX and OpenStack4j                                          
  * 	                                                                                 
  * 	Licensed under the Apache License, Version 2.0 (the "License"); you may not      
  * 	use this file except in compliance with the License. You may obtain a copy of    
@@ -46,13 +46,13 @@ public class ServerTagV21Tests extends AbstractTest {
     }
     
     @Test
-    public void replaceTags() {
+    public void addTags() {
     	String jsonResponse = "{\"tags\": [\"new1\", \"new2\"]}";
         respondWith(200, jsonResponse);
         NovaServerTag novaTags = new NovaServerTag();
         novaTags.addTag("new1");
         novaTags.addTag("new2");
-        NovaServerTag newTags = osv3().compute().serverTagsV21().replace("1", novaTags);
+        NovaServerTag newTags = osv3().compute().serverTagsV21().addTags("1", novaTags);
         
         assertEquals(novaTags.getTags(), newTags.getTags());
     }

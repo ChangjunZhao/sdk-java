@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 	Copyright 2016 ContainX and OpenStack4j                                          
+ * 	Copyright 2018 ContainX and OpenStack4j                                          
  * 	                                                                                 
  * 	Licensed under the Apache License, Version 2.0 (the "License"); you may not      
  * 	use this file except in compliance with the License. You may obtain a copy of    
@@ -34,7 +34,7 @@ public final class Config {
 	public static final Config DEFAULT = new Config();
 
 	private String language = DEFAULT_LANGUAGE;
-	private Map<String, String> microversions;
+	private Map<String, String> microVersions;
 	private int connectTimeout;
 	private int readTimeout;
 	private SSLContext sslContext;
@@ -74,8 +74,8 @@ public final class Config {
 	 * @param microversions 	the microversions map
 	 * @return {@link Config} instance
 	 */
-	public Config withMicroversions(Map<String,String> microversions) {
-		this.microversions = microversions;
+	public Config withMicroVersions(Map<String,String> microVersions) {
+		this.microVersions = microVersions;
 		return this;
 	}
 
@@ -271,8 +271,8 @@ public final class Config {
 		return proxy;
 	}
 
-	public Map<String, String> getMicroversions() {
-		return microversions;
+	public Map<String, String> getMicroVersions() {
+		return microVersions;
 	}
 
 	@Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 	Copyright 2016 ContainX and OpenStack4j                                          
+ * 	Copyright 2018 ContainX and OpenStack4j                                          
  * 	                                                                                 
  * 	Licensed under the Apache License, Version 2.0 (the "License"); you may not      
  * 	use this file except in compliance with the License. You may obtain a copy of    
@@ -24,53 +24,75 @@ import com.huawei.openstack4j.api.compute.ServerTagV21Service;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.compute.domain.NovaServerTag;
 import com.huawei.openstack4j.openstack.compute.functions.ToActionResponseFunction;
-
+/**
+ * Server Tag Operations API implementation
+ * @author ChangjunZhao
+ * @date   2018-11-30
+ */
 public class ServerTagV21ServiceImpl extends BaseComputeServices implements ServerTagV21Service {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ServerTagV21ServiceImpl.class);
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public NovaServerTag list(String serverId) {
 		checkNotNull(serverId);
-		return this.get(NovaServerTag.class, this.uri("/servers/%s/tags", serverId)).execute();
+		return get(NovaServerTag.class, uri("/servers/%s/tags", serverId)).execute();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	public NovaServerTag replace(String serverId, NovaServerTag tags) {
+	public NovaServerTag addTags(String serverId, NovaServerTag tags) {
 		checkNotNull(serverId);
 		checkNotNull(tags);
-		return this.put(NovaServerTag.class, this.uri("/servers/%s/tags", serverId)).entity(tags).execute();
+		return put(NovaServerTag.class, uri("/servers/%s/tags", serverId)).entity(tags).execute();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ActionResponse deleteAll(String serverId) {
 		checkNotNull(serverId);
 		return ToActionResponseFunction.INSTANCE.apply(
-				this.delete(Void.class, this.uri("/servers/%s/tags", serverId)).executeWithResponse());
+				delete(Void.class, uri("/servers/%s/tags", serverId)).executeWithResponse());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ActionResponse delete(String serverId, String tag) {
 		checkNotNull(serverId);
 		checkNotNull(tag);
 		return ToActionResponseFunction.INSTANCE.apply(
-				this.delete(Void.class, this.uri("/servers/%s/tags/%s", serverId, tag)).executeWithResponse());
+				delete(Void.class, uri("/servers/%s/tags/%s", serverId, tag)).executeWithResponse());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ActionResponse check(String serverId, String tag) {
 		checkNotNull(serverId);
 		checkNotNull(tag);
 		return ToActionResponseFunction.INSTANCE.apply(
-				this.get(Void.class, this.uri("/servers/%s/tags/%s", serverId, tag)).executeWithResponse());
+				get(Void.class, uri("/servers/%s/tags/%s", serverId, tag)).executeWithResponse());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ActionResponse addSingle(String serverId, String tag) {
 		checkNotNull(serverId);
 		checkNotNull(tag);
 		return ToActionResponseFunction.INSTANCE.apply(
-				this.put(ActionResponse.class, this.uri("/servers/%s/tags/%s", serverId, tag)).executeWithResponse());
+				put(ActionResponse.class, uri("/servers/%s/tags/%s", serverId, tag)).executeWithResponse());
 	}
 
 }

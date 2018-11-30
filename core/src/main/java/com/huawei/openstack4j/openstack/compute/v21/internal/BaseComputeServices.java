@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 	Copyright 2016 ContainX and OpenStack4j                                          
+ * 	Copyright 2018 ContainX and OpenStack4j                                          
  * 	                                                                                 
  * 	Licensed under the Apache License, Version 2.0 (the "License"); you may not      
  * 	use this file except in compliance with the License. You may obtain a copy of    
@@ -20,7 +20,11 @@ import com.google.common.base.Function;
 import com.huawei.openstack4j.api.types.ServiceType;
 import com.huawei.openstack4j.openstack.common.functions.ReplaceVersionOfURL;
 import com.huawei.openstack4j.openstack.internal.BaseOpenStackService;
-
+/**
+ * Base Compute Services
+ * @author ChangjunZhao
+ * @date   2018-11-30
+ */
 public class BaseComputeServices extends BaseOpenStackService {
 
     protected BaseComputeServices() {

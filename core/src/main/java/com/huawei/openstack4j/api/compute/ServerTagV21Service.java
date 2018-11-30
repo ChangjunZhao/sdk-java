@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 	Copyright 2016 ContainX and OpenStack4j                                          
+ * 	Copyright 2018 ContainX and OpenStack4j                                          
  * 	                                                                                 
  * 	Licensed under the Apache License, Version 2.0 (the "License"); you may not      
  * 	use this file except in compliance with the License. You may obtain a copy of    
@@ -19,18 +19,56 @@ import com.huawei.openstack4j.common.RestService;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.compute.domain.NovaServerTag;
 
+/**
+ * Server tag service for v2.1
+ * @author ChangjunZhao
+ */
 public interface ServerTagV21Service extends RestService {
 	
+	/**
+	 * Querying Tags of an ECS
+	 * @param serverId
+	 * @return
+	 */
 	NovaServerTag list(String serverId);
 	
-	NovaServerTag replace(String serverId, NovaServerTag tag);
+	/**
+	 * Adding Tags of an ECS
+	 * @param serverId
+	 * @param tag
+	 * @return
+	 */
+	NovaServerTag addTags(String serverId, NovaServerTag tag);
 	
+	/**
+	 * Deleting Tags from an ECS
+	 * @param serverId
+	 * @return
+	 */
 	ActionResponse deleteAll(String serverId);
 	
+	/**
+	 * Deleting a Specified Tag from an ECS
+	 * @param serverId
+	 * @param tag
+	 * @return
+	 */
 	ActionResponse delete(String serverId, String tag);
 	
+	/**
+	 * Querying a Specified Tag for an ECS
+	 * @param serverId
+	 * @param tag
+	 * @return
+	 */
 	ActionResponse check(String serverId, String tag);
 	
+	/**
+	 * Adding a Tag to an ECS
+	 * @param serverId
+	 * @param tag
+	 * @return
+	 */
 	ActionResponse addSingle(String serverId, String tag);
 
 }

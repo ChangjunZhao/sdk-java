@@ -1,5 +1,5 @@
 /*******************************************************************************
- * 	Copyright 2016 ContainX and OpenStack4j                                          
+ * 	Copyright 2018 ContainX and OpenStack4j                                          
  * 	                                                                                 
  * 	Licensed under the Apache License, Version 2.0 (the "License"); you may not      
  * 	use this file except in compliance with the License. You may obtain a copy of    
@@ -17,26 +17,8 @@ package com.huawei.openstack4j.api.compute;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import com.huawei.openstack4j.api.compute.ext.InstanceActionsService;
-import com.huawei.openstack4j.api.compute.ext.InterfaceService;
-import com.huawei.openstack4j.model.common.ActionResponse;
-import com.huawei.openstack4j.model.compute.Action;
-import com.huawei.openstack4j.model.compute.RebootType;
 import com.huawei.openstack4j.model.compute.Server;
-import com.huawei.openstack4j.model.compute.Server.Status;
-import com.huawei.openstack4j.model.compute.ServerCreate;
-import com.huawei.openstack4j.model.compute.ServerPassword;
-import com.huawei.openstack4j.model.compute.ServerUpdateOptions;
-import com.huawei.openstack4j.model.compute.VNCConsole;
-import com.huawei.openstack4j.model.compute.VNCConsole.Type;
-import com.huawei.openstack4j.model.compute.VolumeAttachment;
-import com.huawei.openstack4j.model.compute.actions.BackupOptions;
-import com.huawei.openstack4j.model.compute.actions.EvacuateOptions;
-import com.huawei.openstack4j.model.compute.actions.LiveMigrateOptions;
-import com.huawei.openstack4j.model.compute.actions.RebuildOptions;
-import com.huawei.openstack4j.model.compute.builder.ServerCreateBuilder;
 
 /**
  * Server Operations API
