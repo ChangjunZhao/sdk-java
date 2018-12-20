@@ -16,8 +16,6 @@
 package com.huawei.openstack4j.openstack.vpc.v1.internal;
 
 import com.huawei.openstack4j.api.types.ServiceType;
-import com.huawei.openstack4j.core.transport.Config;
-import com.huawei.openstack4j.core.transport.HttpMethod;
 import com.huawei.openstack4j.openstack.internal.BaseOpenStackService;
 
 /**

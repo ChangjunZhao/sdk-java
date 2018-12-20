@@ -15,12 +15,9 @@
  *******************************************************************************/
 package com.huawei.openstack4j.openstack.vpc.v1.domain;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.huawei.openstack4j.model.ModelEntity;
-import com.huawei.openstack4j.openstack.common.ListResult;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,7 +25,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * Model represent attributes of vpc subnet
+ * Model represent attributes of vpc
  *
  * @author ChangjunZhao
  * @date   2018-03-25
@@ -38,15 +35,13 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonRootName("subnet")
-public class Subnet implements ModelEntity{
+@JsonRootName("vpc")
+public class VpcUpdate implements ModelEntity{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private String id;
 
 	/**
 	 * vpc name
@@ -57,76 +52,4 @@ public class Subnet implements ModelEntity{
 	 * vpc subnet cidr
 	 */
 	private String cidr;
-	
-	/**
-	 *  The gateway of the subnet
-	 */
-	@JsonProperty("gateway_ip")
-	private String gatewayIp;
-	
-	/**
-	 * Specifies whether DHCP is enabled for the subnet
-	 */
-	@JsonProperty("dhcp_enable")
-	private boolean dhcpEnable;
-	
-	/**
-	 * Specifies the IP address of DNS server 1 on the subnet
-	 */
-	@JsonProperty("primary_dns")
-	private String primaryDns;
-	
-	/**
-	 * Specifies the IP address of DNS server 2 on the subnet
-	 */
-	@JsonProperty("secondary_dns")
-	private String secondaryDns;
-	
-	/**
-	 * Specifies the DNS server address list of a subnet
-	 */
-	private List<String> dnsList;
-	
-	/**
-	 * Specifies the ID of the AZ to which the subnet belongs.
-	 */
-	@JsonProperty("availability_zone")
-	private String availabilityZone;
-	
-	/**
-	 * Specifies the ID of the VPC to which the subnet belongs.
-	 */
-	@JsonProperty("vpc_id")
-	private String vpcId;
-
-	/**
-	 * vpc status
-	 */
-	private String status;
-	
-	/**
-	 * Specifies the network (Native OpenStack API) ID
-	 */
-	@JsonProperty("neutron_network_id")
-	private String neutronNetworkId;
-	
-	/**
-	 * Specifies the subnet (Native OpenStack API) ID
-	 */
-	@JsonProperty("neutron_subnet_id")
-	private String neutronSubnetId;
-	
-	public static class Subnets extends ListResult<Subnet> {
-
-		private static final long serialVersionUID = 1L;
-
-		@JsonProperty("subnets")
-		private List<Subnet> subnets;
-
-		public List<Subnet> value() {
-			return subnets;
-		}
-
-	}
-
 }

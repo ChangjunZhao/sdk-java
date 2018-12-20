@@ -55,29 +55,45 @@ public class SubnetCreate implements ModelEntity{
 	 */
 	private String cidr;
 	
+	/**
+	 *  The gateway of the subnet
+	 */
 	@JsonProperty("gateway_ip")
 	private String gatewayIp;
 	
+	/**
+	 * Specifies whether DHCP is enabled for the subnet
+	 */
 	@JsonProperty("dhcp_enable")
 	private boolean dhcpEnable;
 	
+	/**
+	 * Specifies the IP address of DNS server 1 on the subnet
+	 */
 	@JsonProperty("primary_dns")
 	private String primaryDns;
 	
+	/**
+	 * Specifies the IP address of DNS server 2 on the subnet
+	 */
 	@JsonProperty("secondary_dns")
 	private String secondaryDns;
 	
+	/**
+	 * Specifies the DNS server address list of a subnet
+	 */
 	private List<String> dnsList;
 	
+	/**
+	 * Specifies the ID of the AZ to which the subnet belongs
+	 */
 	@JsonProperty("availability_zone")
 	private String availabilityZone;
 	
+	/**
+	 * Specifies the ID of the VPC to which the subnet belongs
+	 */
 	@JsonProperty("vpc_id")
 	private String vpcId;
 	
-	/**
-	@JsonProperty("port_security_enable")
-	String portSecurityEnable;
-	**/
-
 }

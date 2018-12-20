@@ -22,9 +22,9 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.PrivateIp;
-import com.huawei.openstack4j.openstack.vpc.v1.domain.PrivateIp.Privateips;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.PrivateIp.PrivateIps;
 /**
- * The implementation of manipulation of Privateip
+ * The implementation of manipulation of Private IP
  * 
  * @author ChangjunZhao
  * @date   2018-03-25
@@ -47,7 +47,7 @@ public class PrivateIpService extends BaseVirtualPrivateCloudService{
 	 * @return
 	 */
 	public List<? extends PrivateIp> list(String subnetId,Map<String, String> filteringParams) {
-		Invocation<Privateips> flavorInvocation = get(Privateips.class, uri("/subnets/%s/privateips",subnetId));
+		Invocation<PrivateIps> flavorInvocation = get(PrivateIps.class, uri("/subnets/%s/privateips",subnetId));
 		if (filteringParams != null) {
             for (Map.Entry<String, String> entry : filteringParams.entrySet()) {
             	flavorInvocation = flavorInvocation.param(entry.getKey(), entry.getValue());
@@ -58,33 +58,33 @@ public class PrivateIpService extends BaseVirtualPrivateCloudService{
 	}
 	
 	/**
-	 * Applying for Private IP Addresses
-	 * @param privateips
+	 * Assigning a Private IP Address
+	 * @param privateIps
 	 * @return
 	 */
-	public List<? extends PrivateIp> apply(Privateips privateips){
-		Preconditions.checkNotNull(privateips, "parameter `privateips` should not be null");
-		return post(Privateips.class, uri("/privateips")).entity(privateips).execute().getList();
+	public List<? extends PrivateIp> apply(PrivateIps privateIps){
+		Preconditions.checkNotNull(privateIps, "parameter `privateips` should not be null");
+		return post(PrivateIps.class, uri("/privateips")).entity(privateIps).execute().getList();
 	}
 	
 	/**
-	 * Querying Elastic IP Address Details
-	 * @param publicipId
+	 * Querying Private IP Address Details
+	 * @param privateIpId
 	 * @return
 	 */
-	public PrivateIp get(String privateipId){
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(privateipId), "parameter `privateipId` should not be empty");
-		return get(PrivateIp.class, uri("/privateips/%s",privateipId)).execute();
+	public PrivateIp get(String privateIpId){
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(privateIpId), "parameter `privateIpId` should not be empty");
+		return get(PrivateIp.class, uri("/privateips/%s",privateIpId)).execute();
 	}
 	
 	/**
-	 * Deleting an Elastic IP Address
-	 * @param publicipId
+	 * Deleting a Private IP Address
+	 * @param privateIpId
 	 * @return
 	 */
-	public ActionResponse delete(String privateipId){
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(privateipId), "parameter `privateipId` should not be empty");
-		return deleteWithResponse(uri("/privateips/%s", privateipId)).execute();
+	public ActionResponse delete(String privateIpId){
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(privateIpId), "parameter `privateipId` should not be empty");
+		return deleteWithResponse(uri("/privateips/%s", privateIpId)).execute();
 	}
 
 }

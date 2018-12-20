@@ -20,7 +20,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.huawei.openstack4j.model.ModelEntity;
-import com.huawei.openstack4j.openstack.common.ListResult;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -39,30 +38,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonRootName("subnet")
-public class Subnet implements ModelEntity{
+public class SubnetUpdate implements ModelEntity{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String id;
-
 	/**
 	 * vpc name
 	 */
 	private String name;
-	
-	/**
-	 * vpc subnet cidr
-	 */
-	private String cidr;
-	
-	/**
-	 *  The gateway of the subnet
-	 */
-	@JsonProperty("gateway_ip")
-	private String gatewayIp;
 	
 	/**
 	 * Specifies whether DHCP is enabled for the subnet
@@ -83,50 +69,8 @@ public class Subnet implements ModelEntity{
 	private String secondaryDns;
 	
 	/**
-	 * Specifies the DNS server address list of a subnet
+	 * Specifies the DNS server address list of a subnet. This field is required if you need to use more than two DNS servers
 	 */
 	private List<String> dnsList;
-	
-	/**
-	 * Specifies the ID of the AZ to which the subnet belongs.
-	 */
-	@JsonProperty("availability_zone")
-	private String availabilityZone;
-	
-	/**
-	 * Specifies the ID of the VPC to which the subnet belongs.
-	 */
-	@JsonProperty("vpc_id")
-	private String vpcId;
-
-	/**
-	 * vpc status
-	 */
-	private String status;
-	
-	/**
-	 * Specifies the network (Native OpenStack API) ID
-	 */
-	@JsonProperty("neutron_network_id")
-	private String neutronNetworkId;
-	
-	/**
-	 * Specifies the subnet (Native OpenStack API) ID
-	 */
-	@JsonProperty("neutron_subnet_id")
-	private String neutronSubnetId;
-	
-	public static class Subnets extends ListResult<Subnet> {
-
-		private static final long serialVersionUID = 1L;
-
-		@JsonProperty("subnets")
-		private List<Subnet> subnets;
-
-		public List<Subnet> value() {
-			return subnets;
-		}
-
-	}
 
 }

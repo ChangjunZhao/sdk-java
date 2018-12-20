@@ -16,18 +16,12 @@
 package com.huawei.openstack4j.api.vpc.v1;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.huawei.openstack4j.api.AbstractTest;
-import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Resource;
-import com.huawei.openstack4j.openstack.vpc.v1.domain.Vpc;
-import com.huawei.openstack4j.openstack.vpc.v1.domain.VpcCreate;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Resource.Quotas;
 
 import okhttp3.mockwebserver.RecordedRequest;

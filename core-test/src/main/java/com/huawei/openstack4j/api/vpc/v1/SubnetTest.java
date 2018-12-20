@@ -28,6 +28,7 @@ import com.huawei.openstack4j.api.AbstractTest;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Subnet;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.SubnetCreate;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.SubnetUpdate;
 
 import okhttp3.mockwebserver.RecordedRequest;
 
@@ -139,11 +140,11 @@ public class SubnetTest extends AbstractTest {
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("114.114.114.114");
 		list.add("114.114.115.115");
-		Subnet subnet = Subnet.builder().id("4779ab1c-7c1a-44b1-a02e-93dfc361b32d").name("subnet").cidr("192.168.20.0/24").gatewayIp("192.168.20.1")
+		SubnetUpdate subnetUpdate = SubnetUpdate.builder().name("subnet")
 				.dhcpEnable(true).primaryDns("114.114.114.114").secondaryDns("114.114.115.115").dnsList(list)
-				.availabilityZone("aa-bb-cc").vpcId("3ec3b33f-ac1c-4630-ad1c-7dba1ed79d85").build();
+				.build();
 
-		subnet = osv3().vpc().subnets().update(subnet);
+		Subnet subnet = osv3().vpc().subnets().update("3ec3b33f-ac1c-4630-ad1c-7dba1ed79d85","4779ab1c-7c1a-44b1-a02e-93dfc361b32d",subnetUpdate);
 
 		RecordedRequest request = server.takeRequest();
 		Assert.assertEquals(request.getPath(), "/v1/project-id/vpcs/3ec3b33f-ac1c-4630-ad1c-7dba1ed79d85/subnets/4779ab1c-7c1a-44b1-a02e-93dfc361b32d");

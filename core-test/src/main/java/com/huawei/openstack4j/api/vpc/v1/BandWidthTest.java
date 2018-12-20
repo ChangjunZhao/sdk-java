@@ -26,6 +26,7 @@ import org.testng.annotations.Test;
 import com.huawei.openstack4j.api.AbstractTest;
 import com.huawei.openstack4j.openstack.vpc.v1.contants.ShareType;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.BandWidth;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.BandWidthUpdate;
 
 import okhttp3.mockwebserver.RecordedRequest;
 
@@ -100,9 +101,9 @@ public class BandWidthTest extends AbstractTest {
 	public void testUpdateBandwidth() throws IOException, InterruptedException {
 		respondWith("/vpc/v1/get_update_bandwidth_response.json");
 		
-		BandWidth bandwidth = BandWidth.builder().id("3fa5b383-5a73-4dcb-a314-c6128546d855").name("2222").size(5).build();
+		BandWidthUpdate bandwidthUpdate = BandWidthUpdate.builder().name("2222").size(5).build();
 
-		bandwidth = osv3().vpc().bandWidths().update(bandwidth);
+		BandWidth bandwidth = osv3().vpc().bandWidths().update("3fa5b383-5a73-4dcb-a314-c6128546d855",bandwidthUpdate);
 
 		RecordedRequest request = server.takeRequest();
 		Assert.assertEquals(request.getPath(), "/v1/project-id/bandwidths/3fa5b383-5a73-4dcb-a314-c6128546d855");

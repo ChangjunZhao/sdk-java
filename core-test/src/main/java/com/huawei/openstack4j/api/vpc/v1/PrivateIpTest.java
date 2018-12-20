@@ -29,7 +29,7 @@ import org.testng.annotations.Test;
 import com.huawei.openstack4j.api.AbstractTest;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.PrivateIp;
-import com.huawei.openstack4j.openstack.vpc.v1.domain.PrivateIp.Privateips;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.PrivateIp.PrivateIps;
 
 import okhttp3.mockwebserver.RecordedRequest;
 
@@ -107,7 +107,7 @@ public class PrivateIpTest extends AbstractTest {
 		PrivateIp privateip2 = PrivateIp.builder().subnetId("531dec0f-3116-411b-a21b-e612e42349fd")
 				.ipAddress("192.168.1.17").build();
 
-		Privateips privateipsApp = new Privateips();
+		PrivateIps privateipsApp = new PrivateIps();
 		ArrayList<PrivateIp> list = new ArrayList<PrivateIp>();
 		list.add(privateip1);
 		list.add(privateip2);

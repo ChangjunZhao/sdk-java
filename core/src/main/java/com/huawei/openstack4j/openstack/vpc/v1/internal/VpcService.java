@@ -23,6 +23,7 @@ import com.google.common.base.Strings;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Vpc;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.VpcCreate;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.VpcUpdate;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Vpc.Vpcs;
 /**
  * The implementation of manipulation of Vpc
@@ -84,8 +85,10 @@ public class VpcService extends BaseVirtualPrivateCloudService{
 	 * @param vpc
 	 * @return
 	 */
-	public Vpc update(Vpc vpc){
-		return put(Vpc.class, uri("/vpcs/%s",vpc.getId())).entity(vpc).execute();
+	public Vpc update(String vpcId,VpcUpdate vpcUpdate){
+		Preconditions.checkNotNull(vpcUpdate, "parameter `vpcUpdate` should not be null");
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(vpcId), "parameter `vpcId` should not be empty");
+		return put(Vpc.class, uri("/vpcs/%s",vpcId)).entity(vpcUpdate).execute();
 	}
 	
 	/**

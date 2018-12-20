@@ -38,8 +38,14 @@ public class VpcCreate implements ModelEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * vpc name
+	 */
 	private String name;
 	
+	/**
+	 * vpc subnet cidr
+	 */
 	private String cidr;
 	
 	/**

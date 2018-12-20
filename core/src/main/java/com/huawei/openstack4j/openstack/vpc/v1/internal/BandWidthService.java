@@ -22,6 +22,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.BandWidth;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.BandWidth.Bandwidths;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.BandWidthUpdate;
 
 /**
  * The implementation of manipulation of Bandwidth
@@ -70,9 +71,10 @@ public class BandWidthService extends BaseVirtualPrivateCloudService{
 	 * @param bandwidth
 	 * @return bandwidth
 	 */
-	public BandWidth update(BandWidth bandwidth){
-		Preconditions.checkNotNull(bandwidth, "parameter `bandwidth` should not be null");
-		return put(BandWidth.class, uri("/bandwidths/%s",bandwidth.getId())).entity(bandwidth).execute();
+	public BandWidth update(String bandWidthId,BandWidthUpdate bandWidtUpdate){
+		Preconditions.checkNotNull(bandWidthId, "parameter `bandWidthId` should not be null");
+		Preconditions.checkNotNull(bandWidtUpdate, "parameter `bandWidtUpdate` should not be null");
+		return put(BandWidth.class, uri("/bandwidths/%s",bandWidthId)).entity(bandWidtUpdate).execute();
 	}
 
 }

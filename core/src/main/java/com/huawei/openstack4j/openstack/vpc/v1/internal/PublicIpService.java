@@ -23,6 +23,7 @@ import com.google.common.base.Strings;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.PublicIp;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.PublicIpApply;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.PublicIpUpdate;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.PublicIp.Publicips;
 /**
  * The implementation of manipulation of Publicip
@@ -57,8 +58,8 @@ public class PublicIpService extends BaseVirtualPrivateCloudService{
 	}
 	
 	/**
-	 * Applying for an Elastic IP Address
-	 * @param creation
+	 * Assigning an Elastic IP Address
+	 * @param apply
 	 * @return
 	 */
 	public PublicIp apply(PublicIpApply apply){
@@ -75,9 +76,9 @@ public class PublicIpService extends BaseVirtualPrivateCloudService{
 	 * @param publicipId
 	 * @return
 	 */
-	public PublicIp get(String publicipId){
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(publicipId), "parameter `publicipId` should not be empty");
-		return get(PublicIp.class, uri("/publicips/%s",publicipId)).execute();
+	public PublicIp get(String publicIpId){
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(publicIpId), "parameter `publicIpId` should not be empty");
+		return get(PublicIp.class, uri("/publicips/%s",publicIpId)).execute();
 	}
 	
 	/**
@@ -85,20 +86,20 @@ public class PublicIpService extends BaseVirtualPrivateCloudService{
 	 * @param publicip
 	 * @return
 	 */
-	public PublicIp update(PublicIp publicip){
-		Preconditions.checkNotNull(publicip, "parameter `apply` should not be null");
-		Preconditions.checkNotNull(publicip.getPortId(), "parameter `publicip.portId` should not be null");
-		return put(PublicIp.class, uri("/publicips/%s",publicip.getId())).entity(publicip).execute();
+	public PublicIp update(String publicIpId,PublicIpUpdate publicIpUpdate){
+		Preconditions.checkNotNull(publicIpUpdate, "parameter `publicIpUpdate` should not be null");
+		Preconditions.checkNotNull(publicIpId, "parameter `publicIpId` should not be null");
+		return put(PublicIp.class, uri("/publicips/%s",publicIpId)).entity(publicIpUpdate).execute();
 	}
 	
 	/**
 	 * Deleting an Elastic IP Address
-	 * @param publicipId
+	 * @param publicIpId
 	 * @return
 	 */
-	public ActionResponse delete(String publicipId){
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(publicipId), "parameter `publicipId` should not be empty");
-		return deleteWithResponse(uri("/publicips/%s", publicipId)).execute();
+	public ActionResponse delete(String publicIpId){
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(publicIpId), "parameter `publicIpId` should not be empty");
+		return deleteWithResponse(uri("/publicips/%s", publicIpId)).execute();
 	}
 
 }

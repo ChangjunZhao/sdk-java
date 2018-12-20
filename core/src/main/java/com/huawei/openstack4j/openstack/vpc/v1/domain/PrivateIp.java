@@ -74,7 +74,7 @@ public class PrivateIp implements ModelEntity{
 	private String status;
 	
 	@Setter
-	public static class Privateips extends ListResult<PrivateIp> {
+	public static class PrivateIps extends ListResult<PrivateIp> {
 
 		private static final long serialVersionUID = 1L;
 

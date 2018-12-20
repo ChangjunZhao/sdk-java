@@ -30,6 +30,7 @@ import com.huawei.openstack4j.api.AbstractTest;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.FixedIp;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Port;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.PortUpdate;
 
 import okhttp3.mockwebserver.RecordedRequest;
 
@@ -140,12 +141,12 @@ public class PortTest extends AbstractTest {
 	public void testUpdatePort() throws IOException, InterruptedException, JSONException {
 		respondWith("/vpc/v1/create_get_update_port_response.json");
 
-		Port port = Port.builder().name("test").id("d00f9c13-412f-4855-8af3-de5d8c24cd60").build();
+		PortUpdate portUpdate = PortUpdate.builder().name("test").build();
 
-		port = osv3().vpc().ports().update(port);
+		Port port = osv3().vpc().ports().update("d00f9c13-412f-4855-8af3-de5d8c24cd60",portUpdate);
 
 		RecordedRequest request = server.takeRequest();
-		JSONAssert.assertEquals("{\"port\": {\"name\": \"test\",\"id\": \"d00f9c13-412f-4855-8af3-de5d8c24cd60\"}}",
+		JSONAssert.assertEquals("{\"port\": {\"name\": \"test\"}}",
 				request.getBody().readUtf8(), true);
 		Assert.assertEquals(request.getPath(), "/v1/ports/d00f9c13-412f-4855-8af3-de5d8c24cd60");
 		Assert.assertEquals(request.getMethod(), "PUT");

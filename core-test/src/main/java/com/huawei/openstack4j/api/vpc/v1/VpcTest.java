@@ -27,6 +27,7 @@ import com.huawei.openstack4j.api.AbstractTest;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Vpc;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.VpcCreate;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.VpcUpdate;
 
 import okhttp3.mockwebserver.RecordedRequest;
 
@@ -122,9 +123,9 @@ public class VpcTest extends AbstractTest {
 	public void testUpdateVpc() throws IOException, InterruptedException {
 		respondWith("/vpc/v1/create_get_update_vpc_response.json");
 
-		Vpc vpc = Vpc.builder().name("vpc").cidr("192.168.0.0/16").id("99d9d709-8478-4b46-9f3f-2206b1023fd3").build();
+		VpcUpdate vpcUpdate = VpcUpdate.builder().name("vpc").cidr("192.168.0.0/16").build();
 		
-		vpc = osv3().vpc().vpcs().update(vpc);
+		Vpc vpc = osv3().vpc().vpcs().update("99d9d709-8478-4b46-9f3f-2206b1023fd3",vpcUpdate);
 
 		RecordedRequest request = server.takeRequest();
 		Assert.assertEquals(request.getPath(), "/v1/project-id/vpcs/99d9d709-8478-4b46-9f3f-2206b1023fd3");

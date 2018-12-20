@@ -23,6 +23,7 @@ import com.google.common.base.Strings;
 import com.huawei.openstack4j.model.common.ActionResponse;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Subnet;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.SubnetCreate;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.SubnetUpdate;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Subnet.Subnets;
 
 /**
@@ -87,11 +88,11 @@ public class SubnetService extends BaseVirtualPrivateCloudService{
 	 * @param subnet
 	 * @return
 	 */
-	public Subnet update(Subnet subnet){
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(subnet.getVpcId()), "parameter `subnet.vpcId` should not be empty");
-		Preconditions.checkArgument(!Strings.isNullOrEmpty(subnet.getId()), "parameter `subnet.id` should not be empty");
-		Preconditions.checkNotNull(subnet.getName(), "parameter `subnet.name` should not be empty");
-		return put(Subnet.class, uri("/vpcs/%s/subnets/%s",subnet.getVpcId(),subnet.getId())).entity(subnet).execute();
+	public Subnet update(String vpcId,String subnetId,SubnetUpdate subnetUpdate){
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(vpcId), "parameter `vpcId` should not be empty");
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(subnetId), "parameter `subnetId` should not be empty");
+		Preconditions.checkNotNull(subnetUpdate, "parameter `subnetUpdate` should not be empty");
+		return put(Subnet.class, uri("/vpcs/%s/subnets/%s",vpcId,subnetId)).entity(subnetUpdate).execute();
 	}
 	
 	/**

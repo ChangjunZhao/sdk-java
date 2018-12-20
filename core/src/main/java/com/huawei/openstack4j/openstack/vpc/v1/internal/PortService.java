@@ -28,6 +28,7 @@ import com.huawei.openstack4j.openstack.common.functions.RemoveProjectIdFromURL;
 import com.huawei.openstack4j.openstack.internal.BaseOpenStackService;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Port;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.Port.Ports;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.PortUpdate;
 
 /**
  * The implementation of manipulation of Port
@@ -93,10 +94,10 @@ public class PortService extends BaseOpenStackService{
 	 * @param port
 	 * @return
 	 */
-	public Port update(Port port){
-		Preconditions.checkNotNull(port, "parameter `port` should not be null");
-		Preconditions.checkNotNull(port.getId(), "parameter `port.id` should not be empty");
-		return put(Port.class, uri("/ports/%s",port.getId())).entity(port).execute();
+	public Port update(String portId,PortUpdate portUpdate){
+		Preconditions.checkNotNull(portUpdate, "parameter `portUpdate` should not be null");
+		Preconditions.checkNotNull(portId, "parameter `portId` should not be empty");
+		return put(Port.class, uri("/ports/%s",portId)).entity(portUpdate).execute();
 	}
 	
 	/**

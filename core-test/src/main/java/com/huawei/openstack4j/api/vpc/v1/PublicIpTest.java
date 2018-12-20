@@ -29,6 +29,7 @@ import com.huawei.openstack4j.openstack.vpc.v1.contants.ShareType;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.BandWidth;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.PublicIp;
 import com.huawei.openstack4j.openstack.vpc.v1.domain.PublicIpApply;
+import com.huawei.openstack4j.openstack.vpc.v1.domain.PublicIpUpdate;
 
 import okhttp3.mockwebserver.RecordedRequest;
 
@@ -135,9 +136,9 @@ public class PublicIpTest extends AbstractTest {
 	public void testUpdatePublicip() throws IOException, InterruptedException {
 		respondWith("/vpc/v1/create_get_update_publicip_response.json");
 		
-		PublicIp publicip = PublicIp.builder().id("2ec9b78d-9368-46f3-8f29-d1a95622a568").portId("f588ccfa-8750-4d7c-bf5d-2ede24414706").build();
+		PublicIpUpdate publicIpUpdate = PublicIpUpdate.builder().portId("f588ccfa-8750-4d7c-bf5d-2ede24414706").build();
 
-		publicip = osv3().vpc().publicIps().update(publicip);
+		PublicIp publicip = osv3().vpc().publicIps().update("2ec9b78d-9368-46f3-8f29-d1a95622a568",publicIpUpdate);
 
 		RecordedRequest request = server.takeRequest();
 		Assert.assertEquals(request.getPath(), "/v1/project-id/publicips/2ec9b78d-9368-46f3-8f29-d1a95622a568");
