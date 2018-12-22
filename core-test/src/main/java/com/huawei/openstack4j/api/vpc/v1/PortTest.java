@@ -120,6 +120,7 @@ public class PortTest extends AbstractTest {
 		Assert.assertEquals(request.getMethod(), "POST");
 		Assert.assertEquals(port.getId(), "d00f9c13-412f-4855-8af3-de5d8c24cd60");
 		Assert.assertEquals(port.getFixedIps().get(0).getIpAddress(), "10.128.1.10");
+		Assert.assertEquals(port.getDnsAssignment().size(), 1);
 		Assert.assertEquals(port.getSecurityGroups().get(0), "02b4e8ee-74fa-4a31-802e-5490df11245e");
 	}
 

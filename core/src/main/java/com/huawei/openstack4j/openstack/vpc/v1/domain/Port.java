@@ -154,7 +154,7 @@ public class Port implements ModelEntity{
 	 * dns assignment
 	 */
 	@JsonProperty("dns_assignment")
-	private List<String> dnsAssignment;
+	private List<DnsAssignment> dnsAssignment;
 	
 	/**
 	 * dns name
